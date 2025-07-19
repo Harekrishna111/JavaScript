@@ -7,16 +7,20 @@
     <title>Document</title>
 </head>
 <script>
-    var header = "  <thead><th>Name</th><th>operation</th></thead>";
+    var header = "<thead><th>Name</th><th>operation</th></thead>";
     var tbl_data = header;
     function clicker() {
 
         var n = document.getElementById("name_box").value;
-        tbl_data += "<tr><td><input type='text' value = "+n+"' readonly> </td><td><button>Edit</button></td></tr>";
+        tbl_data += "<tr><td><input type='text' value = '" + n + "' readOnly></td><td><button onclick='edit(this)'>Edit</button></td></tr>";
         document.getElementById("tbl").innerHTML = tbl_data;
 
         document.getElementById("name_box").value = "";
 
+    }
+
+    function edit(elem) {
+        elem.parentElement.parentElement.children[0].children[0].readOnly = false;
     }
 </script>
 
