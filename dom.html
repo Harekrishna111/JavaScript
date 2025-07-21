@@ -16,6 +16,8 @@
             width: 700px;
             height: auto;
             background-color: #e3e3e3;
+            border-radius: 15px;
+            box-shadow: 20px 20px 50px 15px rgb(146, 192, 220);
         }
 
         h1 {
@@ -23,7 +25,9 @@
             font-family: initial;
             position: relative;
             top: 14px;
+            right: 17px;
             text-decoration: underline;
+            text-shadow: 2px 2px;
         }
 
         input[type="text"],
@@ -64,7 +68,7 @@
 
         .highlight {
             background-color: #74c8ee;
-            
+
         }
     </style>
 </head>
@@ -73,14 +77,17 @@
     var tbl_data = header;
 
     function clicker() {
+
         var n = document.getElementById("name_box").value;
         var num = document.getElementById("num_box").value;
+        if (!(n == "" || num == "")) {
 
-        tbl_data += "<tr><td><input type='text' value='" + n + "' readOnly></td><td><input type='tel' value='" + num + "' readOnly></td><td><button onclick='edit(this)' style='margin-left: 5px;'>Edit</button><button onclick='Delete(this)' style='margin-left: 5px; background-color:red;'>Delete</button></td></tr>";
-        document.getElementById("tbl").innerHTML = tbl_data;
+            tbl_data += "<tr><td><input type='text' value='" + n + "' readOnly></td><td><input type='tel' value='" + num + "' readOnly></td><td><button onclick='edit(this)' style='margin-left: 5px;'>Edit</button><button onclick='Delete(this)' style='margin-left: 5px; background-color:red;'>Delete</button></td></tr>";
+            document.getElementById("tbl").innerHTML = tbl_data;
 
-        document.getElementById("name_box").value = "";
-        document.getElementById("num_box").value = "";
+            document.getElementById("name_box").value = "";
+            document.getElementById("num_box").value = "";
+        }
     }
 
     function edit(elem) {
@@ -103,11 +110,11 @@
     function Search() {
         var length_data = document.getElementById("tbl").children[1].childNodes.length;
         var key = document.getElementById("Search_box").value;
-    
-        for (var i = 0; i < length_data; i<h, i++) {
-           var q = document.getElementById("tbl").children[1].children[i].children[0].children[0].value;
-            var  h = document.getElementById("tbl").children[1].children[i].children[1].children[0].value;
-            if (key == q || key ==h) {
+
+        for (var i = 0; i < length_data; i < h, i++) {
+            var q = document.getElementById("tbl").children[1].children[i].children[0].children[0].value;
+            var h = document.getElementById("tbl").children[1].children[i].children[1].children[0].value;
+            if (key == q || key == h) {
                 document.getElementById("tbl").children[1].children[i].children[0].children[0].classList.add("highlight");
                 document.getElementById("tbl").children[1].children[i].children[1].children[0].classList.add("highlight");
             }
@@ -120,13 +127,13 @@
     <center>
         <div class="phone_book">
             <center>
-                <ul>
-                <h1>Phone Book</h1>
-                </ul>
+
+                <h1>Phone Book</h1><br><br>
+
                 <input type="text" id="Search_box" placeholder="Search">
-                <button onclick="Search()">Search</button><br><br><br>
-                <input type="text" id="name_box" placeholder="Enter your name"><br><br>
-                <input type="text" id="num_box" placeholder="Enter your Number"><br><br>
+                <button onclick="Search()">Search</button><br><br>
+                <input type="text" id="name_box" placeholder="Enter your name"><br>
+                <input type="text" id="num_box" placeholder="Enter your Number"><br>
                 <button onclick="clicker()">Submit</button><br><br>
                 <table border="2" id="tbl"></table>
             </center>
