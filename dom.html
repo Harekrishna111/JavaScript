@@ -12,7 +12,7 @@
     function clicker() {
 
         var n = document.getElementById("name_box").value;
-        tbl_data += "<tr><td><input type='text' value = '" + n + "' readOnly></td><td><button onclick='edit(this)'>Edit</button></td></tr>";
+        tbl_data += "<tr><td><input type='text' value = '" + n + "' readOnly></td><td><button onclick='edit(this)'>Edit</button><button onclick='Delete(this)'>Delete</button></td></tr>";
         document.getElementById("tbl").innerHTML = tbl_data;
 
         document.getElementById("name_box").value = "";
@@ -21,10 +21,43 @@
 
     function edit(elem) {
         elem.parentElement.parentElement.children[0].children[0].readOnly = false;
+        elem.parentElement.innerHTML = "<button onclick='save(this)'>Save</button>";
+    }
+    function save(elem) {
+        elem.parentElement.parentElement.children[0].children[0].readOnly = true;
+        elem.parentElement.innerHTML = "<button onclick='edit(this)'>Edit</button>";
+    }
+    function Delete(elem) {
+        elem.parentElement.parentElement.remove();
+        tbl_data = header;
+
+    }
+    function Search() {
+        var length_data = document.getElementById("tbl").children[1].childNodes.length;
+        var key = document.getElementById("Search_box").value;
+        var q = "";
+
+        for (var i = 0; i < length_data; i++) {
+            q = document.getElementById("tbl").children[1].children[i].children[0].children[0].value;
+            if (key == q) {
+                document.getElementById("tbl").children[1].children[i].children[0].children[0].style.backgroundColor = "blue";
+
+
+            }
+
+
+        }
+
+
+
+
+
     }
 </script>
 
 <body>
+    <input type="text" id="Search_box" placeholder="Search">
+    <button onclick="Search()">Search</button><br><br>
     <input type="text" id="name_box" placeholder="Enter your name">
     <button onclick="clicker()">submit</button><br><br>
     <table border="2" id="tbl">
