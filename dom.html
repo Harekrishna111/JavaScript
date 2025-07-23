@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <style>
+    <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -70,7 +70,10 @@
             background-color: #74c8ee;
 
         }
-    </style> -->
+
+
+
+    </style>
 </head>
 <script>
     var header = "<thead><th>Name</th><th>Contact</th><th>Operation</th></thead>";
@@ -99,7 +102,7 @@
     function save(elem) {
         elem.parentElement.parentElement.children[0].children[0].readOnly = true;
         elem.parentElement.parentElement.children[1].children[0].readOnly = true;
-        elem.parentElement.innerHTML = "<button onclick='edit(this)'>Edit</button><button onclick='Delete(this)' style='margin-left: 5px;'>Delete</button>";
+        elem.parentElement.innerHTML = "<button onclick='edit(this)'>Edit</button><button onclick='Delete(this)' style='margin-left: 5px; background-color:red;'>Delete</button>";
     }
 
     function Delete(elem) {
